@@ -1,7 +1,7 @@
 
 
 
-function getdata(){
+/*function getdata(){
     fetch("https://apis.solarialabs.com/shine/v1/vehicle-thefts?state=UT&apikey=123456789ABCDEFGHIJK", {
 	"method": "GET"
 })
@@ -12,4 +12,4 @@ function getdata(){
 	//console.error(err);
 });
 }
-//setInterval(getdata,1800000);
+//setInterval(getdata,1800000);*/
