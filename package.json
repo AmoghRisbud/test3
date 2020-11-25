@@ -1,17 +1,23 @@
 {
-  "name": "weather-app",
+  "name": "wdl-project",
   "version": "1.0.0",
-  "description": "Weather app using api data",
-  "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "lite-server": "^2.6.1"
   },
-  "author": "AmoghRisbud",
-  "license": "ISC",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite":"lite server"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmoghRisbud/test3.git"
   },
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/AmoghRisbud/test3/issues"
   },
