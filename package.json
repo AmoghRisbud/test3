@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AmoghRisbud",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmoghRisbud/test3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AmoghRisbud/test3/issues"
+  },
+  "homepage": "https://github.com/AmoghRisbud/test3#readme"
 }
