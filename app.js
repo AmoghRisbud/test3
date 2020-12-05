@@ -1,13 +1,15 @@
 
+carurl='https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?ManufacturerType=Intermediate&format=json';
+results=[];
+output="";
+$.getJSON(carurl,function(data){
+	console.log(data);
+	results=data.Results;
+	for(let i=0;i<results.length;i++){
+		const manufacturer=results[i].Mfr_Name;
+	    output="<options >"+manufacturer+"</options>";
+		$("#listcar").html(output);
+		
 
-
-function getdata(){
-    fetch("http://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=e055443a32f0471398420ff3ca57bd4d")
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
+	}
 });
-}
-//setInterval(getdata,1800000);*/

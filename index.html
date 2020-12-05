@@ -1,32 +1,29 @@
-<html>
-    <head>
-
-        <title>Car Information</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <nav class="navbar">
-            <div id="company name"><h3>Company Name</h3></div>
-            <ul id="nav elements">
-                <li>Home</li>
-                <li>News</li>
-                <li>Contact Us</li>
-                <li>About Us</li>
-            </ul>
-        </nav>
-        <script src="app.js" ></script>
-        <div class="img">
-            <img src="/res/2022_honda_civic_prototype_5k_2-5120x2880.jpg" id="landing_img" alt="error">
-        </div>
-        <h1 class="tagline">Get The Right Wheels For You</h1>
-        <form action="/details.html">
-            <label for="Manufacturer">Manufacturer</label>
-            <input type="text" id="Manufacturer" name="manufacturer"><br><br>
-            <label for="Model">Model</label>
-            <input type="text" id="Model" name="model"><br><br>
-            <label for="Year">Year </label>
-            <input type="text" id="Year" name="year"><br><br>
-            <input type="submit" value="Submit">
-          </form>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <select name="carlist" id="listcar"></select>
+    <script>
+    let carurl='https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?ManufacturerType=Intermediate&format=json';
+    let results=[];
+    let output="";
+    $.getJSON(carurl,function(data){
+    	console.log(data);
+        results=data.Results;
+        console.log(results);
+    	for(let i=0;i<results.length;i++){
+    		const manufacturer=results[i].Mfr_Name;
+            output=output+"<option>"+manufacturer+"</option>";
+            console.log(output);
+        }
+        $("#listcar").html(output);
+});
+    </script>
+</body>
 </html>

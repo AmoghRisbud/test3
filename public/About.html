@@ -1,0 +1,153 @@
+<html>
+<head>
+<title></title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+.navbar {
+  width: 500%;
+  background-color:#555;
+  overflow: auto;
+}
+/* Navbar links */
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+  background-color: #000;
+}
+
+/* Current/active navbar link */
+.active {
+  background-color: #4CAF50;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+
+}
+
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a class="active" href="wdl.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="getstarted.html"></i>Get Started</a>
+</div>
+<div class="about-section">
+  <h1>About Us</h1>
+  <h3>We Are "Wheelbros Autopoint" at your service !</h3>
+  <h3>We bring the latest information about the cars and make the selection easier for you !</h3>
+</div>
+
+<h2 style="text-align:center; text-decoration:underline;">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="atharv.jpg" alt="Atharv" style="width:100%">
+      <div class="container">
+        <h2>Atharv Paranjape</h2>
+        <p class="title">Co-founder</p>
+        <p>I design sites</p>
+        <p>atharvp543@gmail.com</p>
+        <p><a href="contactus.html" class="button">Contact</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="risbud.jpg" alt="Amogh" style="width:100%">
+      <div class="container">
+        <h2>Amogh Risbud</h2>
+        <p class="title">Co-founder</p>
+        <p>I love to give the backend support</p>
+        <p>amoghrisbud28@gmail.com</p>
+        <p><a href="contactus.html" class="button">Contact</a></p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+</body>
+</html>

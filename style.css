@@ -2,12 +2,3 @@ h1{
     padding: 50px;
     width: 100%;
 }
-#landing_img{
- width: 100%;
- height: 500px;
-background-size: cover;
-}
-.navbar{
-    justify-content: space-evenly;
-}
- 

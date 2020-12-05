@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.navbar {
+  width: 400%;
+  background-color: #556;
+  overflow: auto;
+}
+
+/* Navbar links */
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+  background-color: #000;
+}
+
+/* Current/active navbar link */
+.active {
+  background-color: #4CAF50;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+
+}
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+  body {
+  background-image: url('Cars1.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>     
+
+<body>
+
+
+
+
+<div class="navbar">
+  <a class="active" href="wdl.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="#"><i class="fa fa-fw fa-newspaper-o"></i>News</a>
+  <a href="contactus.html"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
+  <a href="About.html"><i class="fa fa-fw fa-address-book"></i> About Us</a>
+  <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+</div>
+<h2 style="text-align:center;  text-decoration: underline; color:#FFFFFF">LET'S GO !</h2>
+<select id="manufacturer" onchange="getmanufacturer(m)" style="width: 25%;">
+</select>
+  <select id="Model" onchange="getdetails(this.n)" style="width: 25%;">
+  </select>
+<div id="cardetails" style="background-color: antiquewhite;"></div>
+</div>
+
+
+
+
+<script>
+
+let make="";
+let m;
+let results=[];
+    let brandurl='https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json';
+    let results_makes=[];
+    let output="<option>Select Your Car Manufacturer</option>";
+    $.getJSON(brandurl,function(data){
+    	console.log(data);
+        results_makes=data.Results;
+        //console.log(results_makes);
+    	for(let i=0;i<results_makes.length;i++){
+    		const manufacturer=results_makes[i].Make_Name;
+            output=output+"<option>"+manufacturer+"</option>";
+           // console.log(output) ;
+        }
+        $("#manufacturer").html(output);
+    });
+  
+    
+    function getmanufacturer(m){
+     
+      var e = document.getElementById("manufacturer");
+        var x = e.options[e.selectedIndex].text;
+        const result =  results_makes.find(results_makes => results_makes.Make_Name === x);
+        let modelurl='https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/'+result.Make_Name+'?format=json';
+        
+        let text="<option>Select Your Model</option>";
+        $.getJSON(modelurl,function(data){
+        	console.log(data);
+          results=data.Results;
+          console.log(results);
+        	for(let i=0;i<results.length;i++){
+         		const model=results[i].Model_Name;
+            text=text+"<option>"+model+"</option>";
+             // console.log(text);
+          }
+          $("#Model").html(text);
+      
+        });
+      
+      
+    } 
+    function getdetails(n){
+      let vehicle=n;
+      var e = document.getElementById("manufacturer");
+        var x = e.options[e.selectedIndex].text;
+        const result1 =  results_makes.find(results_makes => results_makes.Make_Name === x);
+      var f = document.getElementById("Model");
+        var y = f.options[f.selectedIndex].text;
+        console.log(results);
+        const result =  results.find(results => results.Model_Name === y);
+      let vehicleurl='https://vpic.nhtsa.dot.gov/api/vehicles/GetCanadianVehicleSpecifications/?Year=2011&Make='+result1.Make_Name+'&Model='+result.Model_Name+'&units=US&format=json';
+  
+      let text="<table style="+"width:50%"+">< <tr><th>Features</th><th>Values</th>";
+      $.getJSON(vehicleurl,function(data){
+        results=data.Results;
+        console.log(results);
+    	  for(let i=0;i<results.length;i++){
+    		  const specs=results[i].Specs;
+          console.log(specs);
+          for(let y=0;y<specs.length;y++){
+            const name=specs[y].Name;
+            const value=specs[y].Value;
+            text+="<tr><td>"+name+"</td><td>"+value+"</td></tr>"
+        }
+        }
+        $("#cardetails").html(text);
+      });
+
+    } 
+</script>
+
+</body>
+</html>
