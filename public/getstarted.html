@@ -118,7 +118,7 @@
 
 <div class="navbar">
   <a class="active" href="wdl.html"><i class="fa fa-fw fa-home"></i> Home</a>
-  <a href="#"><i class="fa fa-fw fa-newspaper-o"></i>News</a>
+  <a href="test.html"><i class="fa fa-fw fa-newspaper-o"></i>News</a>
   <a href="contactus.html"><i class="fa fa-fw fa-envelope"></i> Contact Us</a>
   <a href="About.html"><i class="fa fa-fw fa-address-book"></i> About Us</a>
   <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
@@ -145,11 +145,11 @@ let results=[];
     $.getJSON(brandurl,function(data){
     	console.log(data);
         results_makes=data.Results;
-        //console.log(results_makes);
+        console.log(results_makes);
     	for(let i=0;i<results_makes.length;i++){
     		const manufacturer=results_makes[i].Make_Name;
             output=output+"<option>"+manufacturer+"</option>";
-           // console.log(output) ;
+           //console.log(output) ;
         }
         $("#manufacturer").html(output);
     });

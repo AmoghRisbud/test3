@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <script>
+            const url = 'http://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=e055443a32f0471398420ff3ca57bd4d';
+            let results=[];
+   
+            let output="";
+            $.getJSON(url,function(data){
+                console.log(data);
+            //results_makes=data.Results;
+            //console.log(results_makes);
+    	    for(let i=0;i<results_makes.length;i++){
+    		    //const manufacturer=results_makes[i].Make_Name;
+                // output=output+"<option>"+manufacturer+"</option>";
+                //console.log(output) ;
+            }
+            //$("#manufacturer").html(output);
+        });
+        </script>
+    </body>
+    </html>
